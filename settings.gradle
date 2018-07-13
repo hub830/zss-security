@@ -1,0 +1,6 @@
+rootProject.name = 'zss-security'
+
+include 'security-core'
+include 'security-borowser'
+include 'security-app'
+include 'security-demo'
