@@ -50,10 +50,7 @@ public class UserController {
   @JsonView(UserDetailView.class)
   public ResponseEntity<?> getUser(@PathVariable String id) {
     log.info("------------id:{}", id);
-    if(1==1)
-    {
-      throw new UserNotExistException("1");
-    }
+
     User user = new User();
     user.setUsername("test");
     user.setPassword("123456");
