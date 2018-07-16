@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.zss.core.LoginType;
 import com.zss.core.SecurityProperties;
+import com.zss.security.browser.support.SimpleResponse;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -29,7 +30,8 @@ public class ZssAuthenticationFailureHandler extends SimpleUrlAuthenticationFail
 
       response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
       response.setContentType("application/json;charset=UTF-8");
-      response.getWriter().write(JSON.toJSONString(exception));
+      response.getWriter().write(JSON.toJSONString(new SimpleResponse(exception.getMessage())));
+      return;
     }
     super.onAuthenticationFailure(request, response, exception);
   }

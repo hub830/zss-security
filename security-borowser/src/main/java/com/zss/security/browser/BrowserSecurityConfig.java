@@ -9,7 +9,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import com.zss.core.SecurityProperties;
+import com.zss.core.validate.code.ValidateCodeFilter;
 
 @Configuration
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -31,7 +33,11 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.formLogin()//
+    ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter();
+    validateCodeFilter.setZssAuthenticationFailureHandler(zssAuthenticationFailureHandler);
+
+    http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)//
+        .formLogin()//
         // http.httpBasic()//
         .successHandler(zssAuthenticationSuccessHandler)//
         .failureHandler(zssAuthenticationFailureHandler)//
@@ -42,6 +48,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers(//
             "/authentication/require", //
             "/error", //
+            "/code/image", //
             securityProperties.getBrowser().getLoginPage()//
         )//
         .permitAll()//
