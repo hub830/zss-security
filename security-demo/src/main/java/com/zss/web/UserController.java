@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.zss.UserNotExistException;
 import com.zss.dto.User;
 import com.zss.dto.User.UserDetailView;
 import com.zss.dto.User.UserSimpleView;

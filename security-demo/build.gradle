@@ -5,9 +5,9 @@ apply plugin: 'io.spring.dependency-management'
 dependencies
 {
   compile project(':security-borowser')
-  testCompile('org.springframework.boot:spring-boot-starter-test')
-  testCompile('org.springframework.security:spring-security-test')
   compile("org.springframework.boot:spring-boot-devtools")
+  testCompile('org.springframework.boot:spring-boot-starter-test')
+//  testCompile('org.springframework.security:spring-security-test')
 
   runtime 'mysql:mysql-connector-java:8.0.8-dmr'
 }

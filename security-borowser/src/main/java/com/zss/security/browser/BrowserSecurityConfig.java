@@ -11,17 +11,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Bean
-  public PasswordEncoder passwordEncoder()
-  {
+  public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
   
+  
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    // http.formLogin()//
-    http.httpBasic()//
+    http.formLogin()//
+        // http.httpBasic()//
+        .loginPage("/zss-signin.html")//
         .and()//
         .authorizeRequests()//
+        .antMatchers("/zss-signin.html")//
+        .permitAll()//
         .anyRequest()//
         .authenticated()//
     ;
