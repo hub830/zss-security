@@ -6,3 +6,8 @@ spring:
     password: 123456
   jpa:
     generate-ddl: true
+zss:
+  security:
+    browser:
+      loginPage: /demo-signIn.html
+      loginType: REDIRECT
