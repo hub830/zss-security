@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import com.zss.core.SecurityProperties;
+import com.zss.core.properties.SecurityProperties;
 import com.zss.core.validate.code.ValidateCodeFilter;
 
 @Configuration
@@ -35,7 +35,9 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter();
     validateCodeFilter.setZssAuthenticationFailureHandler(zssAuthenticationFailureHandler);
-
+    validateCodeFilter.setSecurityProperties(securityProperties);
+    validateCodeFilter.afterPropertiesSet();
+    
     http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)//
         .formLogin()//
         // http.httpBasic()//

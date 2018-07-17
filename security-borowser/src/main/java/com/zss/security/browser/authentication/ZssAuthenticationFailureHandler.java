@@ -10,8 +10,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
-import com.zss.core.LoginType;
-import com.zss.core.SecurityProperties;
+import com.zss.core.properties.LoginType;
+import com.zss.core.properties.SecurityProperties;
 import com.zss.security.browser.support.SimpleResponse;
 import lombok.extern.slf4j.Slf4j;
 

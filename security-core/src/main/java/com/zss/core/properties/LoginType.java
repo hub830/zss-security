@@ -1,4 +1,4 @@
-package com.zss.core;
+package com.zss.core.properties;
 
 public enum LoginType {
   REDIRECT, JSON
