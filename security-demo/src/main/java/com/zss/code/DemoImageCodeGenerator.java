@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.ServletRequestUtils;
 import com.zss.core.properties.ImageCodeProperties;
@@ -16,11 +17,8 @@ import com.zss.core.validate.code.ValidateCodeGenerator;
 @Component("imageCodeGenerator")
 public class DemoImageCodeGenerator implements ValidateCodeGenerator {
 
+  @Autowired
   private SecurityProperties securityProperties;
-
-  public void setSecurityProperties(SecurityProperties securityProperties) {
-    this.securityProperties = securityProperties;
-  }
 
   @Override
   public ImageCode generator(HttpServletRequest request) {
